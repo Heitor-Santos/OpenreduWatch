@@ -1,0 +1,10 @@
+groups:
+- name: Ruby HTTP Server Metrics
+  rules:
+  - record: request_count_total
+    expr: http_server_requests_total
+  - record: request_latency_seconds
+    expr: rate(http_server_request_duration_seconds_sum[5m]) / rate(http_server_requests_total[5m])
+  - record: request_error_count_total
+    expr: http_server_exceptions_total
+
