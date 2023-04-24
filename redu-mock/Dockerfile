@@ -1,5 +1,5 @@
 # Use uma imagem oficial do Ruby como base
-FROM ruby:3.0.3
+FROM ruby:2.7.0
 
 # Instale as dependências do sistema necessárias para o seu aplicativo
 RUN apt-get update && \
@@ -28,4 +28,6 @@ ENV RAILS_SERVE_STATIC_FILES true
 RUN bundle exec rake assets:precompile
 
 # Inicie o servidor Puma
-CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+CMD ["bin/rails", "server"]
+
+EXPOSE 3000
